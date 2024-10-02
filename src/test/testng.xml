@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite de Pruebas" verbose="1">
+    <test name="Pruebas de Google Search">
+        <classes>
+            <class>com.tudominio.tuproyecto.tests.GoogleSearchTest</class>
+            <class>com.tudominio.tuproyecto.tests.MiFinanciacion</class>
+            <class>com.tudominio.tuproyecto.tests.FeriaEmprendimiento</class>
+            <class>com.tudominio.tuproyecto.tests.MiCarnet</class>
+            <class>com.tudominio.tuproyecto.tests.Pqrs</class>
+        </classes>
+    </test>
+</suite>

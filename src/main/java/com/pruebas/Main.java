@@ -13,39 +13,25 @@ import com.pruebas.test.*;
 public class Main {
     static long startTime;
     static WebDriver driver;
-    static Vuelos vuelos;
-    static Hoteles hoteles;
-    static Autos autos;
+    static Inicio inicio;
+    static Tablero tablero;
 
-    static Asistencia Asistencia ;
-    static Offline offline;
+    static Programas programas ;
+    static RecursosDigitales recursosDigitales;
 
-    static OtrosServicios otrosServicios;
-    static Presupuesto presupuesto;
+    static Caracterizacion caracterizacion;
+    static HistorialAcademico historialAcademico;
 
-    static  CambiarContrasena CambiarContrasena;
+    static  MisCertificados misCertificados;
 
-    static gestion gestion;
+    static Renovacion renovacion;
 
-    static CambiarAgencia cambiarAgencia;
+    static MiFinanciacion miFinanciacion;
 
-    static CotizacionesMultibles cotizacionesMultibles;
+    static FeriaEmprendimiento feriaEmprendimiento;
 
-    static ListaCotizaciones listaCotizaciones;
-
-    static Reservas reservas;
-
-    static CambiarCliente cambiarCliente;
-
-    static CodigoSesion codigoSesion;
-
-    static Mfa mfa;
-
-    static CerrarSesion cerrarSesion;
-    static Localizador localizador;
-
-
-
+    static MiCarnet miCarnet;
+    static Pqrs pqrs;
 
 
 
@@ -53,189 +39,118 @@ public class Main {
         menuTest();
     }
 
-
-
     public static void menuTest(){
         Scanner scanner = new Scanner(System.in);
-        String codSeg = null;
         int option;
         do{
-            if (codSeg != null){
-                scanner.nextLine();
-            }
-            System.out.print("Ingrese el código de seguridad: ");
-            codSeg = scanner.nextLine();
-            System.out.println("////Menú principal////");
-            System.out.println("1) Vuelos");
-            System.out.println("2) Hotel");
-            System.out.println("3) Autos");
-            System.out.println("4) Asistencia");
-            System.out.println("5) Offline");
-            System.out.println("6) OtrosServicios ");
-            System.out.println("7) presupuesto");
-            System.out.println("8) CambioContrasena");
-            System.out.println("9) gestion");
-            System.out.println("10) CambiarAgencia");
-            System.out.println("11) Cotizaciones Multiple");
-            System.out.println("12) ListaCotizaciones");
-            System.out.println("13) Reservas");
-            System.out.println("14) Cambiar Cliente");
-            System.out.println("15) Codigo Sesion");
-            System.out.println("16) Mfa ");
-            System.out.println("17) Cerrar Sesion");
-            System.out.println("18) Localizador");
+
+            System.out.println("1)   Inicio");
+            System.out.println("2)   Tablero");
+            System.out.println("3)   Programas");
+            System.out.println("4)   Recursos Digitales");
+            System.out.println("5)   Caracterización");
+            System.out.println("6)   Historial Academico");
+            System.out.println("7)   Mis Certificados");
+            System.out.println("8)   Renovacion");
+            System.out.println("9)   Mi Financiacion");
+            System.out.println("10)  Feria Emprendimiento");
+            System.out.println("11)  Mi Carnet");
+            System.out.println("12)  PQRS");
+
             System.out.println("0) Salir");
             System.out.print("Ingrese una opción: ");
             option = scanner.nextInt();
+
             switch(option){
+
+
                 case 1:
-                    System.out.println("/////////////////////");
-                    System.out.println("Elija tipo de test");
-                    System.out.println("1. Ida y vuelta");
-                    System.out.println("2. Solo ida");
-                    System.out.println("3. Multiples trayectos");
-                    System.out.print("Ingrese una opción: ");
-                    int optionVuelo = scanner.nextInt();
-                    while(true) {
-                        if (optionVuelo == 1 || optionVuelo ==2 || optionVuelo ==3) {
-                            break; // Rompe el bucle si se cumple la condición
-                        }else{
-                            System.out.println("Elije una opción valida");
-                        }
-                    }
-                    Main.startTime = System.currentTimeMillis();
-                    vuelos = new Vuelos(driver);
-                    driver = vuelos.cromeDriverConection();
-                    vuelos.visit("https://pre-prod.kontroltravel.com/");
-                    vuelos.selectAndinsertData(optionVuelo,codSeg);
+                    inicio = new Inicio(driver);
+                    driver = inicio.cromeDriverConection();
+                    inicio.visit("https://www.ciaf.digital");
+                    inicio.ejecutarLista();
                     break;
+
                 case 2:
-                    hoteles = new Hoteles(driver);
-                    driver = hoteles.cromeDriverConection();
-                    hoteles.visit("https://pre-prod.kontroltravel.com/");
-                    hoteles.selectAndinsertData(codSeg);
+                    tablero = new Tablero(driver);
+                    driver = tablero.cromeDriverConection();
+                    tablero.visit("https://www.ciaf.digital");
+                    tablero.ejecutarLista();
                     break;
 
                 case 3:
-                    autos = new Autos(driver);
-                    driver = autos.cromeDriverConection();
-                    autos.visit("https://pre-prod.kontroltravel.com/");
-                    autos.selectAndinsertData(codSeg);
+                    programas = new Programas(driver);
+                    driver = programas.cromeDriverConection();
+                    programas.visit("https://www.ciaf.digital");
+                    programas.ejecutarLista();
                     break;
 
                 case 4:
-                    Asistencia = new Asistencia(driver);
-                    driver = Asistencia.cromeDriverConection();
-                    Asistencia.visit("https://ideas.kontroltravel.com/default.aspx");
-                    Asistencia.selectAndinsertData(codSeg);
+                    recursosDigitales= new RecursosDigitales(driver);
+                    driver= recursosDigitales.cromeDriverConection();
+                    recursosDigitales.visit("https://www.ciaf.digital");
+                    recursosDigitales.ejecutarLista();
                     break;
 
                 case 5:
-                    offline= new Offline(driver);
-                    driver= offline.cromeDriverConection();
-                    offline.visit("https://ideas.kontroltravel.com/");
-                    offline.selectAndinsertData();
+                    caracterizacion= new Caracterizacion(driver);
+                    driver= caracterizacion.cromeDriverConection();
+                    caracterizacion.visit("https://www.ciaf.digital");
+                    caracterizacion.ejecutarOtrosServicios();
                     break;
 
+
                 case 6:
-                    otrosServicios= new OtrosServicios(driver);
-                    driver= otrosServicios.cromeDriverConection();
-                    otrosServicios.visit("https://pre-prod.kontroltravel.com/");
-                    otrosServicios.ejecutarOtrosServicios();
+                    historialAcademico = new HistorialAcademico(driver);
+                    driver = historialAcademico.cromeDriverConection();
+                    historialAcademico.visit("https://www.ciaf.digital");
+                    historialAcademico.ejecutarLista();
                     break;
 
 
                 case 7:
-                    presupuesto = new Presupuesto(driver);
-                    driver = presupuesto.cromeDriverConection();
-                    presupuesto.visit("https://pre-prod.kontroltravel.com/");
-                    presupuesto.ejecutarPresupuesto();
+                    misCertificados = new MisCertificados(driver);
+                    driver = misCertificados.cromeDriverConection();
+                    misCertificados.visit("https://www.ciaf.digital");
+                    misCertificados.ejecutarLista();
                     break;
+
 
 
                 case 8:
-                    CambiarContrasena  = new CambiarContrasena(driver);
-                    driver = CambiarContrasena.cromeDriverConection();
-                    CambiarContrasena.visit("https://ideas.kontroltravel.com/");
-                    CambiarContrasena.ejecutarCambioContrasena();
+                    renovacion= new Renovacion(driver);
+                    driver=renovacion.cromeDriverConection();
+                    renovacion.visit("https://www.ciaf.digital");
+                    renovacion.ejecutarLista();
                     break;
 
-
-
                 case 9:
-                    gestion= new gestion(driver);
-                    driver=gestion.cromeDriverConection();
-                    gestion.visit("https://pre-prod.kontroltravel.com/");
-                    gestion.ejecutargestion();
+                    miFinanciacion= new MiFinanciacion(driver);
+                    driver=miFinanciacion.cromeDriverConection();
+                    miFinanciacion.visit("https://www.ciaf.digital");
+                    miFinanciacion.ejecutarLista();
                     break;
 
                 case 10:
-                    cambiarAgencia= new CambiarAgencia(driver);
-                    driver=cambiarAgencia.cromeDriverConection();
-                    cambiarAgencia.visit("https://pre-prod.kontroltravel.com/");
-                    cambiarAgencia.ejecutarCambiarAgencia();
+                    feriaEmprendimiento= new FeriaEmprendimiento(driver);
+                    driver=feriaEmprendimiento.cromeDriverConection();
+                    feriaEmprendimiento.visit("https://www.ciaf.digital");
+                    feriaEmprendimiento.ejecutarLista();
                     break;
 
                 case 11:
-                    cotizacionesMultibles= new CotizacionesMultibles(driver);
-                    driver=cotizacionesMultibles.cromeDriverConection();
-                    cotizacionesMultibles.visit("https://pre-prod.kontroltravel.com/");
-                    cotizacionesMultibles.ejecutarCotizacionesMultiples();
+                    miCarnet= new MiCarnet(driver);
+                    driver=miCarnet.cromeDriverConection();
+                    miCarnet.visit("https://www.ciaf.digital");
+                    miCarnet.ejecutarListaCotizaciones();
                     break;
 
                 case 12:
-                    listaCotizaciones= new ListaCotizaciones(driver);
-                    driver=listaCotizaciones.cromeDriverConection();
-                    listaCotizaciones.visit("https://pre-prod.kontroltravel.com/");
-                    listaCotizaciones.ejecutarListaCotizaciones();
+                    pqrs= new Pqrs(driver);
+                    driver=pqrs.cromeDriverConection();
+                    pqrs.visit("https://www.ciaf.digital");
+                    pqrs.ejecutarLista();
                     break;
-
-                case 13:
-                    reservas= new Reservas(driver);
-                    driver=reservas.cromeDriverConection();
-                    reservas.visit("https://ideas.kontroltravel.com/");
-                    reservas.ejecutarReservas();
-                    break;
-
-                case 14:
-                    cambiarCliente=new CambiarCliente(driver);
-                    driver=cambiarCliente.cromeDriverConection();
-                    cambiarCliente.visit("https://pre-prod.kontroltravel.com/");
-                    cambiarCliente.ejecutarCambiarCliente();
-                    break;
-
-                case 15:
-                    codigoSesion=new CodigoSesion(driver);
-                    driver=codigoSesion.cromeDriverConection();
-                    codigoSesion.visit("https://pre-prod.kontroltravel.com/");
-                    codigoSesion.ejecutarCodigoSesion();
-                    break;
-
-                case 16:
-                    mfa=new Mfa(driver);
-                    driver=mfa.cromeDriverConection();
-                    mfa.visit("https://pre-prod.kontroltravel.com/");
-                    mfa.ejecutarMfa();
-                    break;
-
-                case 17:
-                    cerrarSesion=new CerrarSesion(driver);
-                    driver=cerrarSesion.cromeDriverConection();
-                    cerrarSesion.visit("https://pre-prod.kontroltravel.com/");
-                    cerrarSesion.ejecutarCerrarSesion();
-                    break;
-
-                case 18:
-                    localizador=new Localizador(driver);
-                    driver=localizador.cromeDriverConection();
-                    localizador.visit("https://pre-prod.kontroltravel.com/");
-                    localizador.ejecutarLocalizador();
-                    break;
-
-
-
-
-
 
             }
             CountTime.printTotalExecutionTime(Main.startTime);
