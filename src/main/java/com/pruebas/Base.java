@@ -18,7 +18,7 @@ public class Base {
     }
 
     public WebDriver cromeDriverConection() {
-        System.setProperty("webdriver.chrome.driver", "./src/main/java/chromedriver/chromedriver3.exe");
+        System.setProperty("webdriver.chrome.driver", "./src/main/java/chromedriver/chromedriver1.exe");
         driver = new ChromeDriver();
         Point position = new Point(400, 0); // Posición en la pantalla
         driver.manage().window().setPosition(position);

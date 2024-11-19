@@ -1,49 +1,41 @@
 package com.pruebas;
 
-
 import java.util.Scanner;
-
 import com.pruebas.utils.CountTime;
 import org.openqa.selenium.WebDriver;
 import com.pruebas.test.*;
 
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static long startTime;
     static WebDriver driver;
     static Inicio inicio;
     static Tablero tablero;
-
-    static Programas programas ;
+    static Programas programas;
     static RecursosDigitales recursosDigitales;
-
     static Caracterizacion caracterizacion;
     static HistorialAcademico historialAcademico;
-
-    static  MisCertificados misCertificados;
-
+    static MisCertificados misCertificados;
     static Renovacion renovacion;
-
     static MiFinanciacion miFinanciacion;
-
     static FeriaEmprendimiento feriaEmprendimiento;
-
     static MiCarnet miCarnet;
     static Pqrs pqrs;
 
-
-
-    public static void main (String[] args){
-        menuTest();
+    public static void main(String[] args) {
+        System.out.println("Iniciando el programa...");
+        startTime = System.currentTimeMillis(); // Inicializa el tiempo
+        try {
+            menuTest();
+        } catch (Exception e) {
+            System.out.println("Error en la ejecución: " + e.getMessage());
+        }
     }
 
-    public static void menuTest(){
+    public static void menuTest() {
         Scanner scanner = new Scanner(System.in);
         int option;
-        do{
-
+        do {
+            // Mostrar menú
             System.out.println("1)   Inicio");
             System.out.println("2)   Tablero");
             System.out.println("3)   Programas");
@@ -56,107 +48,164 @@ public class Main {
             System.out.println("10)  Feria Emprendimiento");
             System.out.println("11)  Mi Carnet");
             System.out.println("12)  PQRS");
-
             System.out.println("0) Salir");
+
             System.out.print("Ingrese una opción: ");
             option = scanner.nextInt();
 
-            switch(option){
+            // Validación de la opción ingresada
+            if (option < 0 || option > 12) {
+                System.out.println("Opción no válida, por favor intente de nuevo.");
+                continue; // Regresa al inicio del bucle
+            }
 
-
+            switch(option) {
                 case 1:
-                    inicio = new Inicio(driver);
-                    driver = inicio.cromeDriverConection();
-                    inicio.visit("https://www.ciaf.digital");
-                    inicio.ejecutarLista();
+                    try {
+                        inicio = new Inicio(driver);
+                        driver = inicio.cromeDriverConection();
+                        inicio.visit("https://www.ciaf.digital");
+                        inicio.ejecutarLista();
+                        System.out.println("Acción de 'Inicio' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Inicio': " + e.getMessage());
+                    }
                     break;
 
                 case 2:
-                    tablero = new Tablero(driver);
-                    driver = tablero.cromeDriverConection();
-                    tablero.visit("https://www.ciaf.digital");
-                    tablero.ejecutarLista();
+                    try {
+                        tablero = new Tablero(driver);
+                        driver = tablero.cromeDriverConection();
+                        tablero.visit("https://www.ciaf.digital");
+                        tablero.ejecutarLista();
+                        System.out.println("Acción de 'Tablero' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Tablero': " + e.getMessage());
+                    }
                     break;
 
                 case 3:
-                    programas = new Programas(driver);
-                    driver = programas.cromeDriverConection();
-                    programas.visit("https://www.ciaf.digital");
-                    programas.ejecutarLista();
+                    try {
+                        programas = new Programas(driver);
+                        driver = programas.cromeDriverConection();
+                        programas.visit("https://www.ciaf.digital");
+                        programas.ejecutarLista();
+                        System.out.println("Acción de 'Programas' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Programas': " + e.getMessage());
+                    }
                     break;
 
                 case 4:
-                    recursosDigitales= new RecursosDigitales(driver);
-                    driver= recursosDigitales.cromeDriverConection();
-                    recursosDigitales.visit("https://www.ciaf.digital");
-                    recursosDigitales.ejecutarLista();
+                    try {
+                        recursosDigitales = new RecursosDigitales(driver);
+                        driver = recursosDigitales.cromeDriverConection();
+                        recursosDigitales.visit("https://www.ciaf.digital");
+                        recursosDigitales.ejecutarLista();
+                        System.out.println("Acción de 'Recursos Digitales' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Recursos Digitales': " + e.getMessage());
+                    }
                     break;
 
                 case 5:
-                    caracterizacion= new Caracterizacion(driver);
-                    driver= caracterizacion.cromeDriverConection();
-                    caracterizacion.visit("https://www.ciaf.digital");
-                    caracterizacion.ejecutarOtrosServicios();
+                    try {
+                        caracterizacion = new Caracterizacion(driver);
+                        driver = caracterizacion.cromeDriverConection();
+                        caracterizacion.visit("https://www.ciaf.digital");
+                        caracterizacion.ejecutarOtrosServicios();
+                        System.out.println("Acción de 'Caracterización' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Caracterización': " + e.getMessage());
+                    }
                     break;
-
 
                 case 6:
-                    historialAcademico = new HistorialAcademico(driver);
-                    driver = historialAcademico.cromeDriverConection();
-                    historialAcademico.visit("https://www.ciaf.digital");
-                    historialAcademico.ejecutarLista();
+                    try {
+                        historialAcademico = new HistorialAcademico(driver);
+                        driver = historialAcademico.cromeDriverConection();
+                        historialAcademico.visit("https://www.ciaf.digital");
+                        historialAcademico.ejecutarLista();
+                        System.out.println("Acción de 'Historial Academico' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Historial Academico': " + e.getMessage());
+                    }
                     break;
-
 
                 case 7:
-                    misCertificados = new MisCertificados(driver);
-                    driver = misCertificados.cromeDriverConection();
-                    misCertificados.visit("https://www.ciaf.digital");
-                    misCertificados.ejecutarLista();
+                    try {
+                        misCertificados = new MisCertificados(driver);
+                        driver = misCertificados.cromeDriverConection();
+                        misCertificados.visit("https://www.ciaf.digital");
+                        misCertificados.ejecutarLista();
+                        System.out.println("Acción de 'Mis Certificados' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Mis Certificados': " + e.getMessage());
+                    }
                     break;
 
-
-
                 case 8:
-                    renovacion= new Renovacion(driver);
-                    driver=renovacion.cromeDriverConection();
-                    renovacion.visit("https://www.ciaf.digital");
-                    renovacion.ejecutarLista();
+                    try {
+                        renovacion = new Renovacion(driver);
+                        driver = renovacion.cromeDriverConection();
+                        renovacion.visit("https://www.ciaf.digital");
+                        renovacion.ejecutarLista();
+                        System.out.println("Acción de 'Renovación' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Renovación': " + e.getMessage());
+                    }
                     break;
 
                 case 9:
-                    miFinanciacion= new MiFinanciacion(driver);
-                    driver=miFinanciacion.cromeDriverConection();
-                    miFinanciacion.visit("https://www.ciaf.digital");
-                    miFinanciacion.ejecutarLista();
+                    try {
+                        miFinanciacion = new MiFinanciacion(driver);
+                        driver = miFinanciacion.cromeDriverConection();
+                        miFinanciacion.visit("https://www.ciaf.digital");
+                        miFinanciacion.ejecutarLista();
+                        System.out.println("Acción de 'Mi Financiación' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Mi Financiación': " + e.getMessage());
+                    }
                     break;
 
                 case 10:
-                    feriaEmprendimiento= new FeriaEmprendimiento(driver);
-                    driver=feriaEmprendimiento.cromeDriverConection();
-                    feriaEmprendimiento.visit("https://www.ciaf.digital");
-                    feriaEmprendimiento.ejecutarLista();
+                    try {
+                        feriaEmprendimiento = new FeriaEmprendimiento(driver);
+                        driver = feriaEmprendimiento.cromeDriverConection();
+                        feriaEmprendimiento.visit("https://www.ciaf.digital");
+                        feriaEmprendimiento.ejecutarLista();
+                        System.out.println("Acción de 'Feria Emprendimiento' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Feria Emprendimiento': " + e.getMessage());
+                    }
                     break;
 
                 case 11:
-                    miCarnet= new MiCarnet(driver);
-                    driver=miCarnet.cromeDriverConection();
-                    miCarnet.visit("https://www.ciaf.digital");
-                    miCarnet.ejecutarListaCotizaciones();
+                    try {
+                        miCarnet = new MiCarnet(driver);
+                        driver = miCarnet.cromeDriverConection();
+                        miCarnet.visit("https://www.ciaf.digital");
+                        miCarnet.ejecutarListaCotizaciones();
+                        System.out.println("Acción de 'Mi Carnet' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'Mi Carnet': " + e.getMessage());
+                    }
                     break;
 
                 case 12:
-                    pqrs= new Pqrs(driver);
-                    driver=pqrs.cromeDriverConection();
-                    pqrs.visit("https://www.ciaf.digital");
-                    pqrs.ejecutarLista();
+                    try {
+                        pqrs = new Pqrs(driver);
+                        driver = pqrs.cromeDriverConection();
+                        pqrs.visit("https://www.ciaf.digital");
+                        pqrs.ejecutarLista();
+                        System.out.println("Acción de 'PQRS' ejecutada correctamente.");
+                    } catch (Exception e) {
+                        System.out.println("Error en la opción 'PQRS': " + e.getMessage());
+                    }
                     break;
-
             }
+
             CountTime.printTotalExecutionTime(Main.startTime);
-        }while(option != 0);
-
-
+        } while(option != 0);
     }
-
 }
